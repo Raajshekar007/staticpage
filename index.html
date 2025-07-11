@@ -1,92 +1,411 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tax Consultant - Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Open Sans', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-    }
-    header {
-      background-color: #003366;
-      color: white;
-      padding: 20px 0;
-      text-align: center;
-    }
-    nav {
-      text-align: center;
-      background-color: #002244;
-      padding: 10px 0;
-    }
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    section {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-      background-color: white;
-      margin-top: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    h2 {
-      color: #003366;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #003366;
-      color: white;
-      margin-top: 40px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mithran Tax Consulting Services | Expert Tax Consulting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Chosen Color Palette: GitHub-inspired Professional */
+        /* Primary Background: #ffffff, Subtle Background: #f6f8fa, Dark Text: #24292e, Medium Text: #586069, Blue Accent: #0366d6, Green Accent: #28a745, Red Accent: #cb2431, Yellow Accent: #f6a600 */
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f6f8fa; /* GitHub light background */
+            background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e2e8f0' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E"); /* Subtle diagonal pattern */
+            color: #586069; /* Medium text color */
+        }
+        h1, h2, h3 {
+            color: #24292e; /* Dark text color for headings */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #0366d6, #28a745); /* Blue to Green gradient */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .flow-step {
+            border-color: #0366d6; /* Blue accent border */
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .flow-step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #0366d6; /* Blue accent */
+            transition: all 0.3s ease;
+        }
+        .flow-step:hover::before {
+             background-color: #f6a600; /* Yellow accent on hover */
+        }
+        .flow-step:hover {
+             transform: scale(1.02);
+             box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.15), 0 6px 10px -3px rgba(0, 0, 0, 0.08);
+        }
+        .icon-circle {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background-color: #f6a600; /* Yellow accent */
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fadeInSlideUp {
+            animation: fadeInSlideUp 0.8s ease-out forwards;
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+    </style>
 </head>
-<body>
-  <header>
-    <h1>Your Tax Consultant</h1>
-    <p>Expert Solutions for Your Tax Needs</p>
-  </header>
+<body class="text-slate-700">
+    <!-- No Mermaid JS or SVG used in this document -->
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
-  </nav>
+    <header class="bg-white sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center">
+                <img src="https://placehold.co/40x40/24292e/ffffff?text=MT" alt="Mithran Tax Logo" class="h-10 w-10 mr-2 rounded-full">
+                <span class="text-2xl font-bold text-[#24292e]">Mithran Tax Consulting Services</span>
+            </a>
+            <div>
+                <a href="#services" class="text-[#586069] hover:text-[#0366d6] mx-4 font-medium">Services</a>
+                <a href="#process" class="text-[#586069] hover:text-[#0366d6] mx-4 font-medium">Process</a>
+                <a href="#contact" class="bg-[#0366d6] text-white font-bold py-2 px-4 rounded-lg cta-button shadow-md hover:shadow-lg">Get Started</a>
+            </div>
+        </nav>
+    </header>
 
-  <section id="about">
-    <h2>About Us</h2>
-    <p>We are a Bengaluru-based tax consultancy firm offering expert tax filing, GST services, and financial advisory. Our mission is to simplify taxes for individuals and businesses, ensuring compliance and maximizing savings.</p>
-  </section>
+    <main class="container mx-auto px-6 py-12">
 
-  <section id="services">
-    <h2>Our Services</h2>
-    <ul>
-      <li>Income Tax Filing</li>
-      <li>GST Registration & Returns</li>
-      <li>Corporate Tax Advisory</li>
-      <li>TDS Compliance</li>
-      <li>Business Setup and Legal Advisory</li>
-    </ul>
-  </section>
+        <section id="hero" class="text-center py-20 bg-gradient-to-br from-white to-[#f6f8fa] rounded-xl shadow-lg mb-16 animate-fadeInSlideUp">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">Navigate Tax Season with <span class="gradient-text">Absolute Confidence</span></h1>
+            <p class="text-xl text-[#586069] max-w-3xl mx-auto mb-10">Mithran Tax Consulting Services transforms the daunting complexity of tax codes into clear, actionable strategies, ensuring you never overpay and always remain compliant. Partner with us to maximize your returns and secure your financial future.</p>
+            <a href="#contact" class="bg-[#0366d6] text-white font-bold py-4 px-10 rounded-lg text-lg cta-button shadow-xl hover:shadow-2xl">Schedule a Free Consultation</a>
+        </section>
 
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p><strong>Address:</strong> #123, 4th Cross, Koramangala, Bengaluru – 560034</p>
-    <p><strong>Phone:</strong> +91 98765 43210</p>
-    <p><strong>Email:</strong> info@yourcompany.com</p>
-  </section>
+        <section id="services" class="py-16">
+            <div class="text-center mb-12 animate-fadeInSlideUp delay-100">
+                <h2 class="text-4xl font-bold text-[#24292e]">The Challenge: A Complex Tax Landscape</h2>
+                <p class="text-lg text-[#586069] max-w-2xl mx-auto mt-4">The ever-evolving tax code is notoriously intricate, often leading to missed deductions, costly errors, and significant stress for millions of taxpayers annually.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <div class="bg-white rounded-lg shadow-lg p-8 text-center flex flex-col justify-center items-center h-full animate-fadeInSlideUp delay-200">
+                     <h3 class="text-2xl font-semibold text-[#24292e] mb-4">Are You Overpaying Your Fair Share?</h3>
+                     <p class="text-8xl font-extrabold text-[#cb2431] my-6">78<span class="text-5xl">%</span></p>
+                     <p class="text-[#586069] text-lg">of self-filers express uncertainty about whether they received their maximum possible refund, frequently leaving thousands of dollars unclaimed.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-center items-center h-full animate-fadeInSlideUp delay-300">
+                    <h3 class="text-xl font-semibold text-center text-[#24292e] mb-6">Primary Sources of Taxpayer Anxiety</h3>
+                    <div class="chart-container">
+                        <canvas id="anxietyChart"></canvas>
+                    </div>
+                     <p class="text-center text-sm text-[#586069] mt-6">Our tailored services directly address these prevalent concerns, providing clarity, confidence, and optimal financial outcomes.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="process" class="py-16">
+             <div class="text-center mb-12 animate-fadeInSlideUp delay-400">
+                <h2 class="text-4xl font-bold text-[#24292e]">Our Streamlined 3-Step Process to Clarity</h2>
+                <p class="text-lg text-[#586069] max-w-2xl mx-auto mt-4">We've simplified expert tax consulting into a transparent, efficient, and highly effective framework designed for your peace of mind.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-white p-8 rounded-lg shadow-lg flow-step animate-fadeInSlideUp delay-500">
+                    <div class="icon-circle">🔍</div>
+                    <h3 class="text-2xl font-bold text-[#24292e] mb-2">1. Assess & Understand</h3>
+                    <p class="text-[#586069]">We begin with a comprehensive analysis of your unique financial landscape, meticulously identifying every opportunity for tax savings and potential risk mitigation.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg flow-step animate-fadeInSlideUp delay-500">
+                     <div class="icon-circle">📈</div>
+                    <h3 class="text-2xl font-bold text-[#24292e] mb-2">2. Strategize & Optimize</h3>
+                    <p class="text-[#586069]">Our seasoned experts then develop a personalized tax strategy, outlining clear, actionable steps specifically tailored to optimize your financial outcome.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg flow-step animate-fadeInSlideUp delay-500">
+                     <div class="icon-circle">✅</div>
+                    <h3 class="text-2xl font-bold text-[#24292e] mb-2">3. Execute & Comply</h3>
+                    <p class="text-[#586069]">Finally, we meticulously handle all complexities of filing and compliance, ensuring absolute accuracy and timeliness, granting you complete peace of mind.</p>
+                </div>
+            </div>
+        </section>
 
-  <footer>
-    <p>&copy; 2025 Your Tax Consultant. All rights reserved.</p>
-  </footer>
+        <section class="py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                 <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-center items-center h-full animate-fadeInSlideUp delay-100">
+                    <h3 class="text-xl font-semibold text-center text-[#24292e] mb-6">Average Annual Tax Savings by Client Type</h3>
+                     <div class="chart-container">
+                        <canvas id="savingsChart"></canvas>
+                    </div>
+                     <p class="text-center text-sm text-[#586069] mt-6">Our data-driven strategies consistently deliver tangible results, significantly boosting post-tax income and optimizing capital growth for our diverse clientele.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-center items-center h-full animate-fadeInSlideUp delay-200">
+                    <h3 class="text-xl font-semibold text-center text-[#24292e] mb-6">Our Core Areas of Expertise</h3>
+                    <div class="chart-container">
+                        <canvas id="expertiseChart"></canvas>
+                    </div>
+                    <p class="text-center text-sm text-[#586069] mt-6">We provide comprehensive, in-depth expertise across the full spectrum of personal and business tax services, ensuring all your needs are met.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="py-16 bg-gradient-to-br from-white to-[#f6f8fa] rounded-xl shadow-xl my-16 animate-fadeInSlideUp delay-300">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-[#24292e]">Ready to Take Control of Your Taxes?</h2>
+                <p class="text-lg text-[#586069] max-w-2xl mx-auto mt-4">Let's build a smarter, more secure financial future together. Fill out the form below for a no-obligation consultation with one of our expert tax advisors.</p>
+            </div>
+            <form class="max-w-xl mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <input type="text" placeholder="Your Name" class="w-full p-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0366d6] focus:border-transparent">
+                    <input type="email" placeholder="Your Email" class="w-full p-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0366d6] focus:border-transparent">
+                </div>
+                <div class="mb-4">
+                     <select class="w-full p-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0366d6] focus:border-transparent bg-white text-[#586069]">
+                        <option value="">I'm interested in...</option>
+                        <option value="personal">Personal Tax Filing</option>
+                        <option value="small_business">Small Business Tax Services</option>
+                        <option value="corporate">Corporate Tax Strategy</option>
+                        <option value="audit">Audit Representation</option>
+                        <option value="other">Other (Please specify in message)</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <textarea placeholder="Tell us a little about your needs..." rows="4" class="w-full p-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0366d6] focus:border-transparent"></textarea>
+                </div>
+                <div class="text-center">
+                     <button type="submit" class="bg-[#0366d6] text-white font-bold py-3 px-8 rounded-lg text-lg cta-button w-full md:w-auto shadow-lg hover:shadow-xl">Request My Consultation</button>
+                </div>
+            </form>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#24292e] text-white">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 Mithran Tax Consulting Services. All Rights Reserved.</p>
+            <p class="text-sm text-[#a8b1b8] mt-2">Disclaimer: This information is for informational purposes only and does not constitute financial or legal advice.</p>
+        </div>
+    </footer>
+
+    <script>
+        const wrapLabel = (label) => {
+            const maxLength = 16;
+            if (label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + ' ' + word).length > maxLength && currentLine.length > 0) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine += (currentLine.length === 0 ? '' : ' ') + word;
+                }
+            });
+            lines.push(currentLine);
+            return lines;
+        };
+        
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+              return label.join(' ');
+            } else {
+              return label;
+            }
+        };
+        
+        const defaultChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        color: '#586069', /* Medium text color */
+                        font: { size: 12 }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    },
+                    backgroundColor: '#24292e', /* Dark background for tooltip */
+                    titleFont: { size: 14, weight: 'bold' },
+                    bodyFont: { size: 12 },
+                    padding: 12,
+                    cornerRadius: 6
+                }
+            }
+        };
+
+        // Chosen Color Palette: GitHub-inspired Professional
+        const chartColors = ['#0366d6', '#28a745', '#cb2431', '#f6a600', '#6a737d']; /* Blue, Green, Red, Yellow, Grey */
+
+        const anxietyChartCtx = document.getElementById('anxietyChart').getContext('2d');
+        new Chart(anxietyChartCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Fear of Audit', 'Complexity of Laws', 'Missing Deductions', 'Making an Error'],
+                datasets: [{
+                    label: 'Anxiety Source',
+                    data: [35, 30, 25, 10],
+                    backgroundColor: chartColors,
+                    borderColor: '#ffffff',
+                    borderWidth: 4,
+                }]
+            },
+            options: {
+                ...defaultChartOptions,
+                cutout: '70%',
+                plugins: {
+                    ...defaultChartOptions.plugins,
+                    tooltip: {
+                        ...defaultChartOptions.plugins.tooltip,
+                        callbacks: {
+                            ...defaultChartOptions.plugins.tooltip.callbacks,
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    label += context.parsed + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const savingsChartCtx = document.getElementById('savingsChart').getContext('2d');
+        new Chart(savingsChartCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Individuals', 'Freelancers & Gig Workers', 'Small Businesses', 'Corporations'],
+                datasets: [{
+                    label: 'Average Annual Tax Savings ($)',
+                    data: [1800, 4500, 12500, 45000],
+                    backgroundColor: chartColors[0], /* Blue */
+                    hoverBackgroundColor: chartColors[1], /* Green on hover */
+                    borderRadius: 8,
+                    barThickness: 40
+                }]
+            },
+            options: {
+                ...defaultChartOptions,
+                 scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                             callback: function(value) {
+                                return '$' + (value / 1000) + 'k';
+                            },
+                            color: '#586069' /* Medium text color */
+                        },
+                         grid: { color: '#e2e8f0', drawBorder: false }
+                    },
+                    x: {
+                        ticks: { color: '#586069' }, /* Medium text color */
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+        
+        const expertiseChartCtx = document.getElementById('expertiseChart').getContext('2d');
+        new Chart(expertiseChartCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Personal Tax', wrapLabel('Strategic Tax Planning'), 'IRS Audit Defense', 'Business Tax', 'International Tax', 'Estate Planning'],
+                datasets: [{
+                    label: 'Expertise Level',
+                    data: [95, 98, 92, 97, 85, 88],
+                    backgroundColor: 'rgba(3, 102, 214, 0.1)', /* Blue with transparency */
+                    borderColor: '#0366d6', /* Blue */
+                    pointBackgroundColor: '#cb2431', /* Red accent for points */
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#cb2431',
+                    borderWidth: 2,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }]
+            },
+            options: {
+                ...defaultChartOptions,
+                scales: {
+                    r: {
+                        angleLines: { color: '#e2e8f0' },
+                        grid: { color: '#e2e8f0' },
+                        pointLabels: { 
+                            font: { size: 12 },
+                             color: '#586069' /* Medium text color */
+                        },
+                        ticks: {
+                            backdropColor: 'transparent',
+                            color: '#586069', /* Medium text color */
+                            font: { size: 10 }
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 100
+                    }
+                }
+            }
+        });
+
+    </script>
 </body>
 </html>
